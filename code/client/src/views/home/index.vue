@@ -1,17 +1,6 @@
 <template>
-  <!-- <div class="home-wrapper cf">
-        <infoComponent></infoComponent>
-        <div :class="{'tags-box': pc_bol}">
-            <TagsComponent></TagsComponent>
-        </div>
-        <div :class="{'view-box': pc_bol}">
-            <router-view>
-                <BlogComponent></BlogComponent>
-            </router-view>
-        </div>
-    </div> -->
   <div>
-    <el-container>
+    <el-container class="container">
       <el-header class="header">Header</el-header>
       <el-main class="main">Main</el-main>
       <el-footer class="footer">Footer</el-footer>
@@ -58,13 +47,13 @@ export default {
     }
 };
 </script>
-<style lang="less" scoped>
-.tags-box {
-  width: 30%;
-  float: left;
-}
-.view-box {
-  width: 67%;
-  float: right;
+
+<style lang="scss" scoped>
+.container {
+    .header {
+        width: 100%;
+        height: 200px;
+        background-color: red;
+    }
 }
 </style>

@@ -1,6 +1,6 @@
-'use strict'
-const styleLoader = require('./style-loader')
-const isProduction = process.env.NODE_ENV === 'production'
+'use strict';
+const styleLoader = require('./style-loader');
+const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
     loaders: styleLoader.cssLoader({
@@ -14,3 +14,4 @@ module.exports = {
         image: 'xlink:href'
     }
 }
+;

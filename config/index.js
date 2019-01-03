@@ -7,12 +7,12 @@ module.exports = {
             port: '8090',
             assetsSubDirectory: 'static',
             devtoolType: 'cheap-module-eval-source-map',
-            proxyTable: {  //proxy代理
+            proxyTable: {  // proxy代理
                 '/admin_demo_api': {
                     target: 'http://localhost:3000/admin_demo_api/',
                     changeOrigin: true,
                     pathRewrite: {
-                      '^/admin_demo_api': '/'
+                        '^/admin_demo_api': '/'
                     }
                 }
             }
@@ -23,8 +23,8 @@ module.exports = {
             assetsPath: 'static', // 静态资源目录
             assetsSubDirectory: 'static', // html资源存放目录
             devtoolType: 'source-map', // 代码位置信息
-            productionGzip: false, //开启Gzip压缩
-            productionGzipExtensions: ['js', 'css'] //Gzip压缩文件
+            productionGzip: false, // 开启Gzip压缩
+            productionGzipExtensions: ['js', 'css'] // Gzip压缩文件
         }
     },
 
@@ -41,7 +41,7 @@ module.exports = {
                     target: 'http://localhost:3000/client_demo_api/',
                     changeOrigin: true,
                     pathRewrite: {
-                      '^/client_demo_api': '/'
+                        '^/client_demo_api': '/'
                     }
                 }
             }
@@ -53,8 +53,9 @@ module.exports = {
             assetsSubDirectory: 'static',
             devtoolType: 'source-map',
             productionGzip: false,
-            productionGzipExtensions: ['js', 'css'] 
+            productionGzipExtensions: ['js', 'css']
         }
     }
-    
+
 }
+;

@@ -1,32 +1,31 @@
 'use strict';
-const path = require('path')
-const isAdmin = process.env.NODE_ENV_TYPE === 'admin'
-const prodConf = isAdmin ? require('../config').admin.build :  require('../config').client.build
-const vueLoaderConfig = require('./vue-config.js')
-
+const path = require('path');
+const isAdmin = process.env.NODE_ENV_TYPE === 'admin';
+const prodConf = isAdmin ? require('../config').admin.build : require('../config').client.build;
+const vueLoaderConfig = require('./vue-config.js');
 
 // 拼接路径
-const resolve = function(dir) {
-    return path.join(__dirname, '..', dir)
-}
+const resolve = function (dir) {
+    return path.join(__dirname, '..', dir);
+};
 // 资源路径
-const assetsPath = function(dir) {
-    return path.posix.join(prodConf.assetsPath, dir)
-}
+const assetsPath = function (dir) {
+    return path.posix.join(prodConf.assetsPath, dir);
+};
 
-//webpack 基本设置
+// webpack 基本设置
 module.exports = {
-    //项目入口文件
+    // 项目入口文件
     entry: {
-        app: [ isAdmin ? resolve('code/admin/src/main.js') : resolve('code/client/src/main.js'), 'babel-polyfill']
+        app: [isAdmin ? resolve('code/admin/src/main.js') : resolve('code/client/src/main.js'), 'babel-polyfill']
     },
-    //配置模块如何被解析
+    // 配置模块如何被解析
     resolve: {
-        //自动解析文件扩展名(补全文件后缀)(从左->右)
+        // 自动解析文件扩展名(补全文件后缀)(从左->右)
         // import hello from './hello'  （!hello.js? -> !hello.vue? -> !hello.json）
-        extensions: [".js", ".vue", ".json"],
+        extensions: ['.js', '.vue', '.json'],
 
-        //配置别名映射
+        // 配置别名映射
         alias: {
             'vue$': 'vue/dist/vue.esm.js',
             'src': (isAdmin ? resolve('code/admin/src') : resolve('code/client/src')),
@@ -37,19 +36,19 @@ module.exports = {
         }
     },
 
-    //处理模块的规则(可在此处使用不同的loader来处理模块！)
+    // 处理模块的规则(可在此处使用不同的loader来处理模块！)
     module: {
         rules: [
             {
-                test: /\.js$/, //资源路径
-                loader: 'babel-loader', //该路径执行的loader
+                test: /\.js$/, // 资源路径
+                loader: 'babel-loader', // 该路径执行的loader
                 // exclude: __dirname + '/node_modules/',  //指定哪个文件不需要loader
-                include: isAdmin ? resolve("code/admin/src") : resolve("code/client/src") //指定哪个文件loader
+                include: isAdmin ? resolve('code/admin/src') : resolve('code/client/src') // 指定哪个文件loader
             },
             {
                 test: /\.vue$/,
                 loader: 'vue-loader',
-                include: isAdmin ? resolve("code/admin/src") : resolve("code/client/src"),
+                include: isAdmin ? resolve('code/admin/src') : resolve('code/client/src'),
                 options: vueLoaderConfig
             },
             {
@@ -78,4 +77,4 @@ module.exports = {
             }
         ]
     }
-}
+};
