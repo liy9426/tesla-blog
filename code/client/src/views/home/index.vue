@@ -50,10 +50,29 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-    .header {
-        width: 100%;
-        height: 200px;
-        background-color: red;
+  .header {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    z-index: 3;
+    border-top: 3px solid #009a61;
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1), 0 1px rgba(0, 0, 0, 0.1);
+    background: #fafafa;
+  }
+  .main {
+    min-height: calc(100vh - 110px);
+  }
+  .footer {
+    background: #fafafa;
+    border-bottom: 3px solid #009a61;
+  }
+}
+</style>
+<style lang="scss">
+.container {
+    .footer {
+        height: 50px!important;
     }
 }
 </style>
+

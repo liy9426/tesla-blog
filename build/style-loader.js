@@ -6,6 +6,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const getLessVariables = require('./get-less-variables.js');
 
 exports.cssLoader = function (opts) {
+    opts = opts || {};
+
     function generateLoaders (loader, loaderOpts) {
         const loaders = [
             { // 默认loader
@@ -42,7 +44,11 @@ exports.cssLoader = function (opts) {
         css: generateLoaders(),
         less: generateLoaders('less', {
             globalVars: variables
-        })
+        }),
+        sass: generateLoaders('sass', {
+            indentedSyntax: true
+        }),
+        scss: generateLoaders('sass')
     };
 };
 
