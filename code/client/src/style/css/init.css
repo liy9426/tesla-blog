@@ -1,5 +1,6 @@
 body {
     background: white;
+    background-image: url("../../images/pattern.png");
     font-family: -apple-system,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
 }
 button {
@@ -12,23 +13,24 @@ input, textarea{
 }
 
 .icon {
-    width: 1em; height: 1em;
+    width: 1em; 
+    height: 1em;
     vertical-align: -0.15em;
     fill: currentColor;
     overflow: hidden;
  }
 
-::-webkit-scrollbar {
-    width: 4px;
+/* ::-webkit-scrollbar {
+    width: 10px;
     height: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
     opacity: .8;
-    background: #c1866a;
+    background: #009a61;
     border-radius: 4px;
     transition: all .5s;
-}
+} */
 
 
 /* nprogress styles */

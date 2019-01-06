@@ -65,10 +65,13 @@
     "webpack-merge": "^4.1.1"
   },
   "dependencies": {
+    "alphavantage": "^1.2.0",
     "axios": "^0.17.0",
     "babel-polyfill": "^6.26.0",
     "busboy": "^0.2.14",
+    "echarts": "^4.2.0-rc.2",
     "element-ui": "^2.4.11",
+    "fs": "0.0.1-security",
     "highlight.js": "^9.12.0",
     "ip": "^1.1.5",
     "js-md5": "^0.7.3",
@@ -80,8 +83,10 @@
     "log4js": "^2.4.1",
     "marked": "^0.3.12",
     "mongoose": "^4.13.9",
+    "net": "^1.0.2",
     "nprogress": "^0.2.0",
     "qs": "^6.5.1",
+    "tls": "0.0.1",
     "vue": "^2.5.13",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"

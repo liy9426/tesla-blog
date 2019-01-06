@@ -5,14 +5,14 @@
     overflow: hidden;
  }
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
     width: 4px;
     height: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
     opacity: .8;
-    background: #c1866a;
+    background: #009a61;
     border-radius: 4px;
     transition: all .5s;
-}
+} */
