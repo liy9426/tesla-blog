@@ -10,6 +10,7 @@
 import echarts from 'echarts';
 import { debounce } from 'src/utils/utils';
 /* import { getChartData } from 'src/api/charts'; */
+import axios from 'axios';
 
 require('echarts/theme/macarons'); // echarts theme
 
@@ -35,6 +36,7 @@ export default {
             upBorderColor: '#8A0000',
             downColor: '#00da3c',
             downBorderColor: '#008F28',
+            alpha: null,
             data0: this.splitData([
         ['2013/1/24', 2320.26, 2320.26, 2287.3, 2362.94],
         ['2013/1/25', 2300, 2291.3, 2288.26, 2308.38],
@@ -158,6 +160,20 @@ export default {
                 categoryData.push(rawData[i].splice(0, 1)[0]);
                 values.push(rawData[i]);
             }
+            return {
+                categoryData: categoryData,
+                values: values
+            };
+        },
+        splitData1 (rawData) {
+            var categoryData = Object.keys(rawData);
+            var values = [];
+            for (let val of Object.values(rawData)) {
+                values.push([val['1. open'], val['4. close'], val['3. low'], val['2. high']]);
+            }
+            /* for (var i = 0; i < rawData.length; i++) {
+                values.push(rawData[i]);
+            } */
             return {
                 categoryData: categoryData,
                 values: values
@@ -369,15 +385,33 @@ export default {
         },
         initData () {
             this.chart = echarts.init(this.$el, 'macarons');
-            this.alpha = require('alphavantage')({ key: 'RXWUOZSWDQCFNP28' });
-            this.alpha.data.batch([`msft`, `aapl`]).then(data => {
+            /* this.alpha = alphavantage({ key: 'RXWUOZSWDQCFNP28' }); */
+            /* this.alpha.data.batch([`msft`, `aapl`]).then(data => {
                 console.log(data);
-            });
-            /* getChartData(4).then(res => {
+            }); */
+            /* getChartData().then(res => {
+                console.log(res);
                 if (res.data.length) {
                     this.initChart(res.data);
                 }
             }); */
+            /* axios.get('https://www.alphavantage.co/query', {
+                params: {
+                    'function': 'TIME_SERIES_MONTHLY_ADJUSTED',
+                    'symbol': 'TSLA',
+                    'apikey': 'RXWUOZSWDQCFNP28'
+                }
+            }).then(res => {
+                console.log(res, 11111111111111);
+            }); */
+            axios.get('/alphavantage'
+            ).then(res => {
+                console.log(res);
+                if (res && res.data['Weekly Adjusted Time Series']) {
+                    console.log(1111111111, this.data0);
+                    this.data0 = this.splitData1();
+                }
+            });
             this.initChart();
         }
     }

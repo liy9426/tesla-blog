@@ -43,6 +43,13 @@ module.exports = {
                     pathRewrite: {
                         '^/client_demo_api': '/'
                     }
+                },
+                '/alphavantage': {
+                    target: 'https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol=TSLA&apikey=RXWUOZSWDQCFNP28',
+                    changeOrigin: true,
+                    pathRewrite: {
+                        '^/alphavantage': '/'
+                    }
                 }
             }
         },

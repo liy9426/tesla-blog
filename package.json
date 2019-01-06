@@ -65,7 +65,6 @@
     "webpack-merge": "^4.1.1"
   },
   "dependencies": {
-    "alphavantage": "^1.2.0",
     "axios": "^0.17.0",
     "babel-polyfill": "^6.26.0",
     "busboy": "^0.2.14",
