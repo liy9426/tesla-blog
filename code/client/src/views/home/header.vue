@@ -50,7 +50,7 @@
 
 <script>
 export default {
-    name: 'header',
+    name: 'TeslaHeader',
     data () {
         return {
             activeIndex: '1',

@@ -1,4 +1,4 @@
-import db from '../mongodb'
+import db from '../mongodb';
 let blogSchema = db.Schema({
     type: Array,
     title: String,
@@ -10,6 +10,7 @@ let blogSchema = db.Schema({
     source: Number,
     isVisible: Boolean,
     releaseTime: Date,
-    createTime: { type: Date, default: Date.now}
-})
+    createTime: { type: Date, default: Date.now }
+});
 export default db.model('blog', blogSchema)
+;

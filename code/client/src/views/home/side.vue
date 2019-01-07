@@ -1,6 +1,6 @@
 <template>
    <div class="side-container">
-       <stock-chart></stock-chart>
+       <!-- <stock-chart mode='simple'></stock-chart> -->
    </div>
 </template>
 
