@@ -1,16 +1,16 @@
 import db from '../mongodb';
 let blogSchema = db.Schema({
-    type: Array,
+    type: String,
+    subtypes: Array,
     title: String,
     desc: String,
     html: String,
     markdown: String,
-    level: Number,
-    github: String,
     source: Number,
-    isVisible: Boolean,
+    url: String,
     releaseTime: Date,
-    createTime: { type: Date, default: Date.now }
+    createTime: { type: Date, default: Date.now },
+    readCount: { type: Number, default: 0 }
 });
 export default db.model('blog', blogSchema)
 ;

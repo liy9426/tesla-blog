@@ -1,11 +1,13 @@
 import { Local } from 'src/utils/storage';
+import { sources } from './classify';
 const app = {
     state: {
         slideBar: {
             opened: Local.get('slideBarStatus')
         },
         tagViews: JSON.parse(Local.get('tagViews')) || [],
-        is_add_router: false
+        is_add_router: false,
+        sources
     },
     mutations: {
         TOGGLE_SIDEBAR (state) {

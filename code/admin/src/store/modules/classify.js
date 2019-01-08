@@ -7,26 +7,36 @@ export const sources = [
 
 // 博客分类
 export const blogTypes = [
-    { name: 'HTML' },
-    { name: 'CSS' },
-    { name: 'JavaScript' },
-    { name: 'Vue' },
-    { name: 'Webpack' },
-    { name: 'Node' },
-    { name: 'MongoDB' },
-    { name: '算法' },
-    { name: '工具' },
-    { name: '黑科技' }
+    {
+        name: '技术分享',
+        subtypes: [
+            '前端',
+            '后端',
+            'vuejs',
+            'nodejs',
+            'MongoDB'
+        ]
+    },
+    {
+        name: '特斯拉',
+        subtypes: [
+            'MODEL 3',
+            'MODEL S',
+            'MODEL Y',
+            'MODEL X',
+            '特斯拉中国'
+        ]
+    }
 ];
 export const blogFilters = [
-    { text: 'HTML', value: 'HTML' },
-    { text: 'CSS', value: 'CSS' },
-    { text: 'JavaScript', value: 'JavaScript' },
-    { text: 'Vue', value: 'Vue' },
-    { text: 'Webpack', value: 'Webpack' },
-    { text: 'Node', value: 'Node' },
+    { text: '前端', value: '前端' },
+    { text: '后端', value: '后端' },
+    { text: 'vuejs', value: 'vuejs' },
+    { text: 'nodejs', value: 'nodejs' },
     { text: 'MongoDB', value: 'MongoDB' },
-    { text: '算法', value: '算法' },
-    { text: '工具', value: '工具' },
-    { text: '黑科技', value: '黑科技' }
+    { text: 'MODEL 3', value: 'MODEL 3' },
+    { text: 'MODEL S', value: 'MODEL S' },
+    { text: 'MODEL Y', value: 'MODEL Y' },
+    { text: 'MODEL X', value: 'MODEL X' },
+    { text: '特斯拉中国', value: '特斯拉中国' }
 ];

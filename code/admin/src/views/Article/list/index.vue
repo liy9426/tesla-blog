@@ -31,7 +31,7 @@
 
       <el-table-column
         show-overflow-tooltip
-        v-if="!item.hidden && !item.filters"
+        v-if="!item.filters"
         v-for="(item, index) in headerOptions"
         :key="index"
         :label="item.label"
@@ -39,10 +39,9 @@
         :header-align="item.headerAlign"
         :align="item.align"
         :sortable="item.sort"
-        :min-width="item.minWidth || 150"
       >
         <template slot-scope="scope">
-          <div v-if="scope.column.property == 'isVisible'">{{scope.row[scope.column.property]?'是':'否'}}</div>
+          <div v-if="scope.column.property == 'readCount'">{{scope.row[scope.column.property]}}</div>
           <div v-else-if="scope.column.property == 'source'">{{scope.row[scope.column.property] === 1?'原创':scope.row[scope.column.property] === 2?'转载':'翻译'}}</div>
           <div v-else-if="scope.column.property == 'releaseTime'">{{scope.row[scope.column.property] | parseTime('{y}-{m}-{d}')}}</div>
           <div v-else>{{scope.row[scope.column.property] || '无'}}</div>
@@ -50,7 +49,7 @@
       </el-table-column>
       <el-table-column
         show-overflow-tooltip
-        v-else-if="!item.hidden && item.filters"
+        v-else-if="item.filters"
         :key="index"
         :label="item.label"
         :prop="item.prop"
@@ -66,7 +65,7 @@
             class="tag"
             type="primary"
             close-transition
-            v-for="(tag, index) in scope.row.type"
+            v-for="(tag, index) in scope.row.subtypes"
             :key="index"
           >{{tag}}</el-tag>
         </template>
@@ -75,7 +74,7 @@
         label="操作"
         header-align="center"
         align="center"
-        width="250"
+        width="150"
       >
         <template slot-scope="scope">
           <el-button
@@ -130,15 +129,13 @@ export default {
                 {
                     label: '_id',
                     prop: '_id',
-                    hidden: true,
                     headerAlign: 'center',
                     align: 'center',
                     width: ''
                 },
                 {
-                    label: '类型',
-                    prop: 'type',
-                    hidden: false,
+                    label: '子类型',
+                    prop: 'subtypes',
                     headerAlign: 'center',
                     align: 'center',
                     width: '',
@@ -147,7 +144,6 @@ export default {
                 {
                     label: '标题',
                     prop: 'title',
-                    hidden: false,
                     headerAlign: 'center',
                     align: 'center',
                     width: '',
@@ -156,7 +152,6 @@ export default {
                 {
                     label: '描述',
                     prop: 'desc',
-                    hidden: false,
                     headerAlign: 'center',
                     align: 'center',
                     width: ''
@@ -164,15 +159,6 @@ export default {
                 {
                     label: '来源',
                     prop: 'source',
-                    hidden: false,
-                    headerAlign: 'center',
-                    align: 'center',
-                    width: ''
-                },
-                {
-                    label: '级别',
-                    prop: 'level',
-                    hidden: false,
                     headerAlign: 'center',
                     align: 'center',
                     width: ''
@@ -180,19 +166,18 @@ export default {
                 {
                     label: '发布时间',
                     prop: 'releaseTime',
-                    hidden: false,
                     headerAlign: 'center',
                     align: 'center',
                     width: '',
                     sort: true
                 },
                 {
-                    label: '是否可见',
-                    prop: 'isVisible',
-                    hidden: false,
+                    label: '阅读次数',
+                    prop: 'readCount',
                     headerAlign: 'center',
                     align: 'center',
-                    minWidth: 120
+                    width: '',
+                    sort: true
                 }
             ],
             multipleSelection: []
