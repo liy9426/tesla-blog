@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import Side from './side';
+import Side from './side/index';
 export default {
     name: '',
     data () {
@@ -39,7 +39,7 @@ export default {
   justify-content: center;
 
   .main-container2 {
-    width: 50%!important;
+    width: 80%!important;
     flex: none;
 
     .main-content {

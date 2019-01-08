@@ -16,7 +16,8 @@
       :visible.sync="detailChartVisible"
       :show-close="true"
       v-if="mode==='simple'"
-      :modal="false"
+      width="60%"
+      top="10vh"
     >
       <stock-chart mode="detail"></stock-chart>
     </el-dialog>
@@ -318,18 +319,20 @@ export default {
 <style lang="scss" scoped>
 .chart-container {
     position: relative;
+    width: 100%;
+    overflow: hidden;
     .stock-chart {
     }
     .detail-btn {
       position: absolute;
-      right: 10px;
+      right: 40px;
       top: -8px;
     }
     .simple {
         height: 350px;
     }
     .detail {
-        height: 600px;
+        height: 500px;
     }
 }
 </style>

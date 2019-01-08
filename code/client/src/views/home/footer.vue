@@ -38,6 +38,7 @@
 
     <el-dialog
       :visible.sync="suggestionVisible"
+      v-if="suggestionVisible"
       width="30%"
       title="建议 / 反馈"
     >
@@ -46,6 +47,7 @@
         :rules="rules"
         ref="ruleForm"
         label-width="100px"
+        width="60%"
       >
         <el-form-item label="反馈类型">
           <el-radio
@@ -124,15 +126,22 @@ export default {
             this.wechatVisible = true;
         },
         handleSubmitSuggestion () {
-            axios.post('/suggestion', this.suggestionForm).then(res => {
-                this.$message({
-                    message: '提交成功!',
-                    type: 'success'
-                });
-            }).catch(err => {
-                console.log(err);
+            this.$refs.ruleForm.validate((valid) => {
+                if (valid) {
+                    axios.post('/suggestion', this.suggestionForm).then(res => {
+                        this.$message({
+                            message: '提交成功!',
+                            type: 'success'
+                        });
+                    }).catch(err => {
+                        console.log(err);
+                    });
+                    this.suggestionVisible = false;
+                } else {
+                    console.log('error submit!!');
+                    return false;
+                }
             });
-            this.suggestionVisible = false;
         }
     },
     watch: {

@@ -22,8 +22,9 @@
             <el-menu-item index="2-3">MODEL Y</el-menu-item>
             <el-menu-item index="2-4">MODEL 3</el-menu-item>
           </el-submenu>
-          <el-menu-item index="3">技术分享</el-menu-item>
           <el-menu-item index="4">特斯拉中国</el-menu-item>
+          <el-menu-item index="6">特斯拉全球</el-menu-item>
+          <el-menu-item index="3">技术分享</el-menu-item>
           <el-menu-item index="5"><a
               href="https://www.ele.me"
               target="_blank"
