@@ -33,6 +33,7 @@ const music = {
                     .get('blog/list', params)
                     .then(res => {
                         commit('BLOGLIST', res);
+                        console.log('blogList', res);
                         resolve(res);
                     })
                     .catch(err => {

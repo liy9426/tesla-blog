@@ -5,7 +5,6 @@ let blogSchema = db.Schema({
     title: String,
     desc: String,
     html: String,
-    markdown: String,
     source: Number,
     url: String,
     releaseTime: Date,

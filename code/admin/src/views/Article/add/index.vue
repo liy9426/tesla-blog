@@ -21,8 +21,8 @@
             <el-form-item label="文章描述" prop="desc">
                 <el-input type="textarea" v-model="info.desc"></el-input>
             </el-form-item>
-            <el-form-item label="文章内容" prop="markdown">
-                <Markdown v-model="info.markdown"></Markdown>
+            <el-form-item label="文章内容">
+                <Markdown v-model="info.html"></Markdown>
             </el-form-item>
             <el-form-item label="来源" prop="source">
                 <el-select v-model="info.source" placeholder="请选择来源" class="block">
@@ -57,7 +57,6 @@
                     title: '',
                     desc: '',
                     html: '',
-                    markdown: '',
                     source: 1,
                     releaseTime: new Date()
                 },
@@ -72,9 +71,6 @@
                     desc: [
                         { required: true, message: '请填写文章描述', trigger: 'blur' }
                     ],
-                    // markdown: [
-                    //     { required: true, message: '请填写文章内容', trigger: 'blur' }
-                    // ],
                     releaseTime: [
                         { required: true, message: '请选择文章的发布时间', trigger: 'change', type: 'date' }
                     ]
@@ -91,8 +87,8 @@
                 this.$refs[formName].validate(async (valid) => {
                     if (valid) {
                         try {
-                            this.info.html = this.info.markdown;
                             await this.$store.dispatch('addBlog', this.info);
+                            console.log(this.info.html);
                             this.loading = false;
                             this.$router.push('/article/list');
                         } catch (e) {
@@ -122,7 +118,6 @@
 
 <style lang="less" scoped>
     article {
-        text-align: center;
         padding: 0 100px;
         h2 {
             text-align: center;

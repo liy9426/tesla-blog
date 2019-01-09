@@ -1,19 +1,4 @@
 import blogModel from '../../models/blog';
-import marked from 'marked';
-
-marked.setOptions({
-    renderer: new marked.Renderer(),
-    gfm: true, // 允许 Git Hub标准的markdown.
-    tables: true, // 允许支持表格语法。该选项要求 gfm 为true。
-    breaks: true, // 允许回车换行。该选项要求 gfm 为true。
-    pedantic: false, // 尽可能地兼容 markdown.pl的晦涩部分。不纠正原始模型任何的不良行为和错误。
-    sanitize: true, // 对输出进行过滤（清理），将忽略任何已经输入的html代码（标签）
-    smartLists: true, // 使用比原生markdown更时髦的列表。 旧的列表将可能被作为pedantic的处理内容过滤掉.
-    smartypants: false, // 使用更为时髦的标点，比如在引用语法中加入破折号。
-    highlight: function (code) {
-        return require('highlight.js').highlightAuto(code).value;
-    }
-});
 
 module.exports = {
     async list (ctx, next) {
@@ -38,9 +23,10 @@ module.exports = {
                 {
                     $or: [{ type: { $regex: reg } }, { title: { $regex: reg } }]
                 },
-                { createTime: 0, html: 0 },
+                { createTime: 0},
                 { limit: pagesize * 1, skip: (pageindex - 1) * pagesize }
             );
+            console.log(data);
             ctx.send(data);
         } catch (e) {
             console.log(e);
@@ -58,7 +44,6 @@ module.exports = {
             if (data) {
                 ctx.sendError('数据已经存在, 请重新添加!');
             } else {
-                paramsData.html = marked(paramsData.html);
                 let data = await ctx.add(blogModel, paramsData);
                 ctx.send(paramsData);
             }
@@ -73,7 +58,6 @@ module.exports = {
         );
         let paramsData = ctx.request.body;
         try {
-            paramsData.html = marked(paramsData.html);
             let data = await ctx.update(
                 blogModel,
                 { _id: paramsData._id },

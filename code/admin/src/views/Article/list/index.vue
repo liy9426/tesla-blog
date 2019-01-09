@@ -126,9 +126,16 @@ export default {
             pagesize: 10,
             size_scoped: [10, 20, 30, 40],
             headerOptions: [
-                {
+                /* {
                     label: '_id',
                     prop: '_id',
+                    headerAlign: 'center',
+                    align: 'center',
+                    width: ''
+                }, */
+                {
+                    label: '类型',
+                    prop: 'type',
                     headerAlign: 'center',
                     align: 'center',
                     width: ''
@@ -186,7 +193,6 @@ export default {
     mounted () {
         this.getBlogList();
     },
-
     methods: {
         increment (index) {
             return index + 1 + (this.pageindex - 1) * this.pagesize;
@@ -196,12 +202,10 @@ export default {
             this.getBlogList();
         },
         handleSizeChange (val) {
-      // console.log(`每页 ${val} 条`);
             this.pagesize = val;
             this.getBlogList();
         },
         handleCurrentChange (val) {
-      // console.log(`当前页: ${val}`);
             this.pageindex = val;
             this.getBlogList();
         },
@@ -228,7 +232,7 @@ export default {
         .then(async () => {
             try {
                 await this.$store.dispatch('delBlog', scope.row._id);
-                this.blogList.splice(scope.$index, 1);
+                this.getBlogList();
             } catch (e) {}
             this.$message({
                 type: 'success',
@@ -249,7 +253,7 @@ export default {
             this.blogInfo = scope.row;
         },
         filterTag (value, row) {
-            return row.type.some(v => v === value);
+            return row.subtypes.some(v => v === value);
         }
     },
     computed: {
