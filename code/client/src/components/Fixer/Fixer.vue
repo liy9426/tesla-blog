@@ -1,44 +1,29 @@
 <template>
-  <div class="footer-container">
-    <div class="footer-content">
-      <span>
-        Design by: 美国老土
-      </span>
-      <span>
-        <a href="mailto:yaying9610@gmail.com">联系站长</a>
-      </span>
-      <span>
-        <a @click="wechatVisible=true">微信</a>
-      </span>
-      <span>
-        <a
-          href="https://github.com/liy9426"
-          target="blank"
-        >github</a>
-      </span>
-      <!-- <span>
-        <a @click="suggestionVisible=true">意见与建议</a>
-      </span> -->
-      <span>
-        备案号：湘ICP备14011335号-2
-      </span>
-    </div>
+   <div class="fixer-container">
+       <div class="fixer-item">
+           <div class="item-content">
+               <i class="el-icon-arrow-up" style="font-size: 1.5em;"></i>
+           </div>
+       </div>
+       <div class="fixer-item">
+           <div class="item-content" @click="suggestionVisible=true">
+               <i class="el-icon-edit-outline" style="font-size: 1.5em;"></i>
+           </div>
+       </div>
+       <div class="fixer-item">
+           <div class="item-content">
+               <icon-svg name="weixin"></icon-svg>
+           </div>
+       </div>
+       <!-- <div class="fixer-item">
+           <icon-svg name="github"></icon-svg>
+       </div> -->
 
-    <!-- <el-dialog
-      :visible.sync="wechatVisible"
-      width="240px"
-      :show-close="false"
-    >
-      <span><img
-          src="../../images/wechat.png"
-          alt=""
-          width="200px"
-        ></span>
-    </el-dialog>
 
     <el-dialog
       :visible.sync="suggestionVisible"
       v-if="suggestionVisible"
+      :modalAppendToBody="false"
       width="600px"
       title="建议 / 反馈"
     >
@@ -89,17 +74,17 @@
           @click="handleSubmitSuggestion"
         >确 定</el-button>
       </span>
-    </el-dialog> -->
-  </div>
+    </el-dialog>
+   </div>
 </template>
 
 <script>
-/* import axios from 'src/utils/fetch'; */
+import IconSvg from 'src/components/Icon-svg';
+import axios from 'src/utils/fetch';
 export default {
     name: '',
     data () {
         return {
-            wechatVisible: false/* ,
             suggestionVisible: false,
             suggestionForm: {
                 type: '1',
@@ -117,14 +102,16 @@ export default {
                         trigger: 'blur'
                     }
                 ]
-            } */
+            }
         };
     },
-    components: {},
+    components: {
+        IconSvg
+    },
     methods: {
         handleShowWechat () {
             this.wechatVisible = true;
-        }/* ,
+        },
         handleSubmitSuggestion () {
             this.$refs.ruleForm.validate((valid) => {
                 if (valid) {
@@ -142,8 +129,8 @@ export default {
                     return false;
                 }
             });
-        } */
-    }/* ,
+        }
+    },
     watch: {
         suggestionVisible (nVal) {
             if (nVal) {
@@ -154,22 +141,27 @@ export default {
                 };
             }
         }
-    } */
+    }
 };
 </script>
 
 <style scoped lang="scss">
-.footer-container {
+.fixer-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    border-radius: 4px;
 
-    .footer-content {
-        span {
-            display: inline-block;
-            padding: 0 10px;
-            font-size: 14px;
-            line-height: 50px;
+    .fixer-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        background-color: white;
+        cursor: pointer;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid #ebeef5;
         }
     }
 }

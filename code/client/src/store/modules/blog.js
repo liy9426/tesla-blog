@@ -23,24 +23,26 @@ const blog = {
     actions: {
         // 获取博客列表
         async getBlogList ({commit, state}, params) {
-            params.pagesize = params.pagesize || state.pagesize;
-            params.type = params.type === 'all' ? null : params.type;
-            state.loadingMore = true;
-            state.loadingBol = false;
+            // params.pagesize = params.pagesize || state.pagesize;
+            // params.type = params.type === 'all' ? null : params.type;
+            // state.loadingMore = true;
+            // state.loadingBol = false;
             return new Promise((resolve, reject) => {
                 axios.get('blog/list', params)
                     .then(res => {
-                        state.loadingMore = false;
+                        // state.loadingMore = false;
                         resolve(res);
-                        if (res.data.length <= 0 && params.pageindex > 1) return;
+                        console.log('res', res);
+                        commit('BLOGLIST', res.data);
+                        /* if (res.data.length <= 0 && params.pageindex > 1) return;
                         if (params.pageindex > 1) {
                             commit('BLOGLIST', state.list.concat(res.data));
                         } else {
                             commit('BLOGLIST', res.data);
-                        }
-                        if (res.data.length >= state.pagesize) {
+                        } */
+                        /* if (res.data.length >= state.pagesize) {
                             state.loadingBol = true;
-                        }
+                        } */
                     }).catch(err => {
                         // console.log(err)
                         reject(err);

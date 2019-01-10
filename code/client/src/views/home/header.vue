@@ -12,7 +12,7 @@
           mode="horizontal"
           @select="handleSelect"
           background-color="#fafafa"
-          active-text-color="#009a61"
+          active-text-color="#008acd"
         >
           <el-menu-item index="1">首页</el-menu-item>
           <el-submenu index="2">

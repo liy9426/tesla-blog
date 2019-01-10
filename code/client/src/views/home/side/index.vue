@@ -45,7 +45,7 @@ export default {
     width: 100%;
 
     .side-item {
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
 
     .scroll-fix {

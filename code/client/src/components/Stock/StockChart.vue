@@ -1,17 +1,20 @@
 <template>
   <div class="chart-container">
-    <div
-      :class="[className, mode]"
-      :style="{width:width}"
-      class="stock-chart"
-      v-loading="loading"
-    ></div>
-    <el-button
-      class="detail-btn"
-      type="text"
-      v-if="mode==='simple'"
-      @click="detailChartVisible=true"
-    >查看详情</el-button>
+    <el-card class="chart-card">
+      <div
+        :class="[className, mode]"
+        :style="{width:width}"
+        class="stock-chart"
+        v-loading="loading"
+      ></div>
+      <el-button
+        class="detail-btn"
+        type="text"
+        v-if="mode==='simple'"
+        @click="detailChartVisible=true"
+      >查看详情</el-button>
+    </el-card>
+
     <el-dialog
       :visible.sync="detailChartVisible"
       :show-close="true"
@@ -133,7 +136,7 @@ export default {
                     }
                 },
                 legend: {
-                    data: ['日K']
+                    data: ['周K']
                 },
                 xAxis: {
                     type: 'category',
@@ -155,7 +158,7 @@ export default {
                 dataZoom: [
                     {
                         type: 'inside',
-                        start: 90,
+                        start: 92,
                         end: 100
                     },
                     {
@@ -166,7 +169,7 @@ export default {
                 ],
                 series: [
                     {
-                        name: '日K',
+                        name: '周K',
                         type: 'candlestick',
                         data: this.data0.values,
                         itemStyle: {
@@ -181,12 +184,20 @@ export default {
                 ]
             };
             if (this.mode !== 'simple') {
-                chartOption.legend.data = ['日K', 'MA5', 'MA10', 'MA20', 'MA30'];
+                chartOption.legend.data = [
+                    '周K',
+                    'MA5',
+                    'MA10',
+                    'MA20',
+                    'MA30'
+                ];
                 chartOption.series[0].markPoint = {
                     label: {
                         normal: {
                             formatter: function (param) {
-                                return param != null ? Math.round(param.value) : '';
+                                return param != null
+                                    ? Math.round(param.value)
+                                    : '';
                             }
                         }
                     },
@@ -196,7 +207,7 @@ export default {
                             coord: ['2013/5/31', 2300],
                             value: 2300,
                             itemStyle: {
-                                normal: {color: 'rgb(41,60,85)'}
+                                normal: { color: 'rgb(41,60,85)' }
                             }
                         },
                         {
@@ -217,7 +228,9 @@ export default {
                     ],
                     tooltip: {
                         formatter: function (param) {
-                            return param.name + '<br>' + (param.data.coord || '');
+                            return (
+                                param.name + '<br>' + (param.data.coord || '')
+                            );
                         }
                     }
                 };
@@ -232,8 +245,8 @@ export default {
                                 symbol: 'circle',
                                 symbolSize: 10,
                                 label: {
-                                    normal: {show: false},
-                                    emphasis: {show: false}
+                                    normal: { show: false },
+                                    emphasis: { show: false }
                                 }
                             },
                             {
@@ -242,8 +255,8 @@ export default {
                                 symbol: 'circle',
                                 symbolSize: 10,
                                 label: {
-                                    normal: {show: false},
-                                    emphasis: {show: false}
+                                    normal: { show: false },
+                                    emphasis: { show: false }
                                 }
                             }
                         ],
@@ -259,7 +272,8 @@ export default {
                         }
                     ]
                 };
-                chartOption.series = [chartOption.series[0],
+                chartOption.series = [
+                    chartOption.series[0],
                     {
                         name: 'MA5',
                         type: 'line',
@@ -286,7 +300,7 @@ export default {
                         lineStyle: {
                             normal: { opacity: 0.5 }
                         }
-                    }/* ,
+                    } /* ,
                     {
                         name: 'MA30',
                         type: 'line',
@@ -295,7 +309,8 @@ export default {
                         lineStyle: {
                             normal: { opacity: 0.5 }
                         }
-                } */];
+                } */
+                ];
             }
             this.chart.setOption(chartOption);
             this.loading = false;
@@ -308,7 +323,9 @@ export default {
             );
             axios.get('/alphavantage').then(res => {
                 if (res && res.data['Weekly Adjusted Time Series']) {
-                    this.data0 = this.splitData1(res.data['Weekly Adjusted Time Series']);
+                    this.data0 = this.splitData1(
+                        res.data['Weekly Adjusted Time Series']
+                    );
                     this.initChart();
                 }
             });
@@ -318,22 +335,33 @@ export default {
 </script>
 <style lang="scss" scoped>
 .chart-container {
-    position: relative;
     width: 100%;
-    overflow: hidden;
-    .stock-chart {
-    }
-    .detail-btn {
-      position: absolute;
-      right: 40px;
-      top: -8px;
-    }
-    .simple {
-        height: 350px;
-    }
-    .detail {
-        height: 500px;
+    .chart-card {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        .stock-chart {
+        }
+        .detail-btn {
+            position: absolute;
+            right: 35px;
+            top: 2px;
+        }
+        .simple {
+            height: 300px;
+        }
+        .detail {
+            height: 500px;
+        }
     }
 }
 </style>
+<style lang="scss">
+.chart-container {
+    .el-card__body {
+        padding: 10px;
+    }
+}
+</style>
+
 

@@ -24,7 +24,8 @@ export const blogTypes = [
             'MODEL S',
             'MODEL Y',
             'MODEL X',
-            '特斯拉中国'
+            '特斯拉中国',
+            '特斯拉杂谈'
         ]
     }
 ];
@@ -38,5 +39,6 @@ export const blogFilters = [
     { text: 'MODEL S', value: 'MODEL S' },
     { text: 'MODEL Y', value: 'MODEL Y' },
     { text: 'MODEL X', value: 'MODEL X' },
-    { text: '特斯拉中国', value: '特斯拉中国' }
+    { text: '特斯拉中国', value: '特斯拉中国' },
+    { text: '特斯拉杂谈', value: '特斯拉杂谈' }
 ];
