@@ -1,24 +1,53 @@
 <template>
-   <div class="fixer-container">
-       <div class="fixer-item">
-           <div class="item-content">
-               <i class="el-icon-arrow-up" style="font-size: 1.5em;"></i>
-           </div>
-       </div>
-       <div class="fixer-item">
-           <div class="item-content" @click="suggestionVisible=true">
-               <i class="el-icon-edit-outline" style="font-size: 1.5em;"></i>
-           </div>
-       </div>
-       <div class="fixer-item">
-           <div class="item-content">
-               <icon-svg name="weixin"></icon-svg>
-           </div>
-       </div>
-       <!-- <div class="fixer-item">
+  <div class="fixer-container">
+    <div
+      class="fixer-item"
+      v-show="showGotoTop"
+      @click="gotoTop"
+    >
+      <div class="item-content">
+        <i
+          class="el-icon-arrow-up"
+          style="font-size: 1.5em;"
+        ></i>
+      </div>
+    </div>
+    <div
+      class="fixer-item"
+      @click="suggestionVisible=true"
+    >
+      <div class="item-content">
+        <i
+          class="el-icon-edit-outline"
+          style="font-size: 1.5em;"
+        ></i>
+      </div>
+    </div>
+    <div class="fixer-item">
+      <el-popover
+        placement="left"
+        trigger="hover"
+        width="100px"
+      >
+        <img
+          src="../../images/wechat.png"
+          alt=""
+          width="120px"
+        >
+        <div
+          class="item-content"
+          slot="reference"
+        >
+          <icon-svg name="weixin"></icon-svg>
+        </div>
+
+      </el-popover>
+
+    </div>
+
+    <!-- <div class="fixer-item">
            <icon-svg name="github"></icon-svg>
        </div> -->
-
 
     <el-dialog
       :visible.sync="suggestionVisible"
@@ -75,7 +104,7 @@
         >确 定</el-button>
       </span>
     </el-dialog>
-   </div>
+  </div>
 </template>
 
 <script>
@@ -83,8 +112,12 @@ import IconSvg from 'src/components/Icon-svg';
 import axios from 'src/utils/fetch';
 export default {
     name: '',
+    created () {
+        window.addEventListener('scroll', this.handleScroll);
+    },
     data () {
         return {
+            showGotoTop: false,
             suggestionVisible: false,
             suggestionForm: {
                 type: '1',
@@ -108,27 +141,41 @@ export default {
     components: {
         IconSvg
     },
+    beforeDestroy () {
+        window.removeEventListener('scroll', this.handleScroll);
+    },
     methods: {
         handleShowWechat () {
             this.wechatVisible = true;
         },
         handleSubmitSuggestion () {
-            this.$refs.ruleForm.validate((valid) => {
+            this.$refs.ruleForm.validate(valid => {
                 if (valid) {
-                    axios.post('/suggestion', this.suggestionForm).then(res => {
-                        this.$message({
-                            message: '提交成功!',
-                            type: 'success'
+                    axios
+                        .post('/suggestion', this.suggestionForm)
+                        .then(res => {
+                            this.$message({
+                                message: '提交成功!',
+                                type: 'success'
+                            });
+                        })
+                        .catch(err => {
+                            console.log(err);
                         });
-                    }).catch(err => {
-                        console.log(err);
-                    });
                     this.suggestionVisible = false;
                 } else {
                     console.log('error submit!!');
                     return false;
                 }
             });
+        },
+        handleScroll () {
+            const el = document.scrollingElement || document.documentElement;
+            this.showGotoTop = el.scrollTop > 100;
+        },
+        gotoTop () {
+            window.scrollTo(0, 0);
+            this.showGotoTop = false;
         }
     },
     watch: {

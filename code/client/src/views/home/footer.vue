@@ -7,9 +7,9 @@
       <span>
         <a href="mailto:yaying9610@gmail.com">联系站长</a>
       </span>
-      <span>
+      <!-- <span>
         <a @click="wechatVisible=true">微信</a>
-      </span>
+      </span> -->
       <span>
         <a
           href="https://github.com/liy9426"
