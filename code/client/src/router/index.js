@@ -62,6 +62,10 @@ const router = new Router({
                     name: 'article'
                 }
             ]
+        },
+        {
+            path: '*',
+            redirect: '/home'
         }
     ]
 });

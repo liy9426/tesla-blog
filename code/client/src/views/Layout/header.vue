@@ -13,10 +13,9 @@
           @select="handleSelect"
           background-color="#fafafa"
           active-text-color="#008acd"
-          router
         >
           <el-menu-item index="home">首页</el-menu-item>
-          <el-submenu>
+          <el-submenu index="subject">
             <template slot="title">专题</template>
             <el-menu-item index="model-s">MODEL S</el-menu-item>
             <el-menu-item index="model-3">MODEL 3</el-menu-item>
@@ -35,7 +34,7 @@
       <div class="nav-search">
         <el-input
           placeholder="搜索关键字"
-          v-model="input5"
+          v-model="searchStr"
           class="search"
         >
           <el-button
@@ -56,12 +55,12 @@ export default {
     data () {
         return {
             activeIndex: 'home',
-            input5: ''
+            searchStr: ''
         };
     },
     methods: {
         handleSelect (key, keyPath) {
-            console.log(key, keyPath);
+            this.$router.push({ name: key });
         }
     }
 };

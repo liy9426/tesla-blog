@@ -5,7 +5,7 @@
               <div class="thumbnail"><img src="../../assets/images/thumbnails/tesla.jpg" alt="thumbnail" height="100px"></div>
               <div class="content">
                   <div class="title">
-                      <a href="">{{item.title}}</a>
+                      <router-link :to="`/article/` + item._id">{{item.title}}</router-link>
                   </div>
                   <div class="tags">
                       <div class="release-time">
