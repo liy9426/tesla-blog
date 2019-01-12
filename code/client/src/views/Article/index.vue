@@ -12,7 +12,7 @@
                         <div class="intro fmt" v-html="blogHtml"></div>
                     </div>
                     <div class="logo">
-                        <img :src="require(`src/images/source_single_${blogInfo.source === 1?1:blogInfo.source === 2?2:3}.png`)" alt="">
+                        <img :src="require(`src/assets/images/source_single_${blogInfo.source === 1?1:blogInfo.source === 2?2:3}.png`)" alt="">
                     </div>
                 </div>
             </div>
@@ -74,7 +74,7 @@ export default {
         .content {
             width: 100%;
             padding: 10px;
-            background: #f9f9f3 url('../../images/note-bg.jpg');
+            background: #f9f9f3 url('../../assets/images/note-bg.jpg');
             text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.25);
             
 

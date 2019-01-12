@@ -1,7 +1,7 @@
 <template>
   <div class="header-container">
     <img
-      src="../../images/logo.png"
+      src="../../assets/images/logo.png"
       alt="logo"
       class="logo-img"
     >
@@ -13,19 +13,20 @@
           @select="handleSelect"
           background-color="#fafafa"
           active-text-color="#008acd"
+          router
         >
-          <el-menu-item index="1">首页</el-menu-item>
-          <el-submenu index="2">
+          <el-menu-item index="home">首页</el-menu-item>
+          <el-submenu>
             <template slot="title">专题</template>
-            <el-menu-item index="2-1">MODEL X</el-menu-item>
-            <el-menu-item index="2-2">MODEL S</el-menu-item>
-            <el-menu-item index="2-3">MODEL Y</el-menu-item>
-            <el-menu-item index="2-4">MODEL 3</el-menu-item>
+            <el-menu-item index="model-s">MODEL S</el-menu-item>
+            <el-menu-item index="model-3">MODEL 3</el-menu-item>
+            <el-menu-item index="model-x">MODEL X</el-menu-item>
+            <el-menu-item index="model-y">MODEL Y</el-menu-item>
           </el-submenu>
-          <el-menu-item index="4">特斯拉中国</el-menu-item>
-          <el-menu-item index="6">特斯拉全球</el-menu-item>
-          <el-menu-item index="3">技术分享</el-menu-item>
-          <el-menu-item index="5"><a
+          <el-menu-item index="tesla-china">特斯拉中国</el-menu-item>
+          <el-menu-item index="tesla-world">特斯拉全球</el-menu-item>
+          <el-menu-item index="geek">技术分享</el-menu-item>
+          <el-menu-item index="more"><a
               href="https://www.ele.me"
               target="_blank"
             >更多</a></el-menu-item>
@@ -54,7 +55,7 @@ export default {
     name: 'TeslaHeader',
     data () {
         return {
-            activeIndex: '1',
+            activeIndex: 'home',
             input5: ''
         };
     },

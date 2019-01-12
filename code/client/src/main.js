@@ -2,19 +2,23 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
-import './style/index.css';
-import './javascript/index';
+import './assets/style/index.css';
+import './assets/js/index';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-
+import IconSvg from './components/Icon-svg/';
 import * as filters from './filters';
 
-import customComponents from './custom-components';
+// 全局过滤器
 Object.keys(filters).forEach(key => {
     Vue.filter(key, filters[key]);
 });
-Vue.use(customComponents);
+
+// element ui组件
 Vue.use(ElementUI);
+
+// 全局组件
+Vue.component('Icon', IconSvg);
 
 new Vue({
     el: '#app',

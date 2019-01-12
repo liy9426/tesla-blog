@@ -2,7 +2,7 @@
    <div class="item-container">
        <el-card class="item-card">
           <div class="card-content">
-              <div class="thumbnail"><img src="../../images/thumbnails/tesla.jpg" alt="thumbnail" height="100px"></div>
+              <div class="thumbnail"><img src="../../assets/images/thumbnails/tesla.jpg" alt="thumbnail" height="100px"></div>
               <div class="content">
                   <div class="title">
                       <a href="">{{item.title}}</a>

@@ -30,7 +30,7 @@
         width="100px"
       >
         <img
-          src="../../images/wechat.png"
+          src="../../assets/images/wechat.png"
           alt=""
           width="120px"
         >

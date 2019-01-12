@@ -38,7 +38,7 @@ const dev = merge(baseConf, {
                 loader: 'eslint-loader',
                 enforce: 'pre',
                 include: isAdmin ? resolve('code/admin/src') : resolve('code/client/src'),
-                exclude: isAdmin ? resolve('code/admin/src/javascript') : resolve('code/client/src/javascript'),
+                exclude: isAdmin ? resolve('code/admin/src/javascript') : resolve('code/client/src/assets/js'),
                 options: {
                     formatter: require('eslint-friendly-formatter')
                 }
