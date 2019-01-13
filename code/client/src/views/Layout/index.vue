@@ -60,16 +60,16 @@ export default {
         overflow: hidden;
 
         .main-container {
-            width: 850pt !important;
+            width: 1100px !important;
             flex: none;
 
             .main-content {
-                width: 610pt !important;
+                width: 800px !important;
             }
 
             .main-side {
                 /* border: 1px solid red; */
-                width: 240pt;
+                width: 300px;
                 flex: none;
                 padding: 0;
                 margin: 0 10px;

@@ -8,6 +8,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import IconSvg from './components/Icon-svg/';
 import * as filters from './filters';
+import 'vue-social-share/dist/client.css';
 
 // 全局过滤器
 Object.keys(filters).forEach(key => {

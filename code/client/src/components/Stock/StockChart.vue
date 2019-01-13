@@ -1,5 +1,5 @@
 <template>
-  <div class="chart-container">
+  <div class="chart-container" v-show="!loading">
     <el-card class="chart-card">
       <div
         :class="[className, mode]"

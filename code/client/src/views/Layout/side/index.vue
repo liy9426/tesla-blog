@@ -1,9 +1,15 @@
 <template>
-   <div class="side-container">
-       <stock-chart mode='simple' class="side-item"></stock-chart>
-       <side-top-read class="side-item"></side-top-read>
-       <side-ad class="side-item" :class="{'scroll-fix': scrollFix}"></side-ad>
-   </div>
+  <div class="side-container">
+    <stock-chart
+      mode='simple'
+      class="side-item"
+    ></stock-chart>
+    <side-top-read class="side-item"></side-top-read>
+    <side-ad
+      class="side-item"
+      :class="{'scroll-fix': scrollFix}"
+    ></side-ad>
+  </div>
 </template>
 
 <script>
@@ -50,9 +56,9 @@ export default {
 
     .scroll-fix {
         position: fixed;
-        left: calc(66% + 6px);
+        right: calc(50% - 560px);
         top: 68px;
-        width: 24%;
+        width: 300px;
     }
 }
 </style>
